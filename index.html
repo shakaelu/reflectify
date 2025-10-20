@@ -38,7 +38,7 @@
 
     header {
       background: var(--bg-darker);
-      padding: 1rem 0;
+      padding: 1.5rem 0;
       position: sticky;
       top: 0;
       width: 100%;
@@ -60,25 +60,20 @@
 
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 5vw, 2rem);
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
       font-weight: 900;
       color: var(--highlight);
       letter-spacing: 1px;
       text-transform: uppercase;
     }
 
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
     nav a {
       font-family: 'Lora', serif;
       color: var(--text-muted);
-      margin: 0.5rem 0.8rem;
+      margin: 0.5rem 1rem;
       text-decoration: none;
       font-weight: 600;
-      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
       transition: color 0.3s ease, transform 0.3s ease;
     }
 
@@ -89,7 +84,7 @@
     }
 
     .hero {
-      min-height: 80vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -128,35 +123,35 @@
 
     .hero h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 7vw, 3.5rem);
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
       font-weight: 900;
       color: var(--highlight);
       text-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .hero p {
-      font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+      font-size: clamp(1rem, 3vw, 1.3rem);
       color: var(--text-muted);
-      max-width: 500px;
-      margin: 0 auto 1.5rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
     }
 
     .store-links {
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       flex-wrap: wrap;
     }
 
     .store-link {
       font-family: 'Lora', serif;
       color: var(--text-light);
-      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
       font-weight: 600;
       text-decoration: none;
-      padding: 0.6rem 1.2rem;
+      padding: 0.8rem 1.5rem;
       border: 2px solid var(--accent);
       border-radius: 8px;
       transition: all 0.3s ease;
@@ -173,11 +168,11 @@
       display: inline-block;
       background: var(--accent);
       color: var(--text-light);
-      padding: 0.8rem clamp(1.2rem, 4vw, 2rem);
-      border-radius: 8px;
+      padding: 1rem clamp(1.5rem, 4vw, 2.5rem);
+      border-radius: 10px;
       text-decoration: none;
       font-weight: 700;
-      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      font-size: clamp(1rem, 3vw, 1.2rem);
       transition: all 0.3s ease;
     }
 
@@ -185,21 +180,21 @@
       background: var(--highlight);
       color: var(--bg-dark);
       transform: scale(1.1);
-      box-shadow: 0 6px 15px rgba(43, 106, 106, 0.6);
+      box-shadow: 0 8px 20px rgba(43, 106, 106, 0.6);
     }
 
     .section {
-      padding: clamp(3rem, 8vw, 5rem) 1rem;
+      padding: clamp(4rem, 10vw, 6rem) 1rem;
       position: relative;
       text-align: center;
     }
 
     .section h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-size: clamp(2rem, 6vw, 3rem);
       font-weight: 900;
       color: var(--highlight);
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       text-transform: uppercase;
       opacity: 0;
       transform: translateY(30px);
@@ -214,21 +209,21 @@
     .feature-flow {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
-      margin: 1.5rem 0;
+      gap: 3rem;
+      margin: 2rem 0;
     }
 
     .feature {
       position: relative;
-      padding: 1.5rem clamp(1rem, 4vw, 1.5rem);
+      padding: 2rem clamp(1rem, 5vw, 2rem);
       text-align: left;
       transition: transform 0.5s ease, opacity 0.5s ease;
       opacity: 0;
-      transform: translateX(-30px);
+      transform: translateX(-50px);
     }
 
     .feature:nth-child(even) {
-      transform: translateX(30px);
+      transform: translateX(50px);
       text-align: right;
     }
 
@@ -239,16 +234,16 @@
 
     .feature h3 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.4rem, 4vw, 1.8rem);
+      font-size: clamp(1.5rem, 4vw, 2rem);
       color: var(--accent);
       font-weight: 700;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
     }
 
     .feature p {
-      font-size: clamp(0.8rem, 2.5vw, 1rem);
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
       color: var(--text-muted);
-      max-width: 450px;
+      max-width: 500px;
       margin: 0 auto;
     }
 
@@ -259,7 +254,7 @@
     .waitlist {
       text-align: center;
       background: var(--bg-darker);
-      padding: clamp(3rem, 8vw, 5rem) 1rem;
+      padding: clamp(4rem, 10vw, 6rem) 1rem;
       position: relative;
     }
 
@@ -281,16 +276,16 @@
 
     .waitlist h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 6vw, 3rem);
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
       color: var(--highlight);
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .waitlist p {
-      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      font-size: clamp(1rem, 3vw, 1.3rem);
       color: var(--text-muted);
-      max-width: 500px;
-      margin: 0 auto 1.5rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
     }
 
     .waitlist-input {
@@ -301,20 +296,20 @@
     }
 
     .waitlist input {
-      padding: 0.8rem;
+      padding: 1rem;
       border: none;
-      border-radius: 8px;
-      width: clamp(200px, 80vw, 280px);
+      border-radius: 10px;
+      width: clamp(250px, 60vw, 320px);
       background: #1a1a1e;
       color: var(--text-light);
       font-family: 'Lora', serif;
-      font-size: clamp(0.8rem, 2.5vw, 1rem);
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
     .waitlist input:focus {
       outline: none;
-      box-shadow: 0 0 12px rgba(43, 106, 106, 0.7);
+      box-shadow: 0 0 15px rgba(43, 106, 106, 0.7);
       transform: scale(1.02);
     }
 
@@ -323,10 +318,10 @@
       background: var(--accent);
       color: var(--text-light);
       border: none;
-      padding: 0.8rem clamp(1.2rem, 4vw, 2rem);
-      border-radius: 8px;
+      padding: 1rem clamp(1.5rem, 4vw, 2.5rem);
+      border-radius: 10px;
       font-weight: 700;
-      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      font-size: clamp(1rem, 3vw, 1.2rem);
       cursor: pointer;
       transition: all 0.3s ease;
     }
@@ -335,22 +330,22 @@
       background: var(--highlight);
       color: var(--bg-dark);
       transform: scale(1.1);
-      box-shadow: 0 6px 15px rgba(43, 106, 106, 0.6);
+      box-shadow: 0 8px 20px rgba(43, 106, 106, 0.6);
     }
 
     .message {
-      margin-top: 1.5rem;
+      margin-top: 2rem;
       font-family: 'Lora', serif;
-      font-size: clamp(0.8rem, 2.5vw, 1rem);
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
       font-weight: 600;
     }
 
     footer {
       background: var(--bg-darker);
       text-align: center;
-      padding: 1.5rem 0;
+      padding: 2rem 0;
       color: var(--text-muted);
-      font-size: clamp(0.7rem, 2vw, 0.8rem);
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
       font-family: 'Lora', serif;
     }
 
@@ -358,92 +353,39 @@
     @media (max-width: 768px) {
       .nav {
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
       }
       nav {
-        margin-top: 0.5rem;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-      }
-      nav a {
-        margin: 0.3rem 0.5rem;
-      }
-      .hero {
-        min-height: 60vh;
-        padding: 1.5rem 0.5rem;
+        margin-top: 1rem;
       }
       .hero h2 {
-        font-size: clamp(1.8rem, 6vw, 2.5rem);
-      }
-      .hero p {
-        font-size: clamp(0.8rem, 3vw, 1rem);
-        max-width: 90%;
+        font-size: clamp(2rem, 8vw, 3.5rem);
       }
       .feature {
         text-align: center !important;
-        padding: 1rem;
       }
       .feature p {
         margin: 0 auto !important;
-        max-width: 90%;
       }
       .feature:nth-child(even) {
-        transform: translateX(-30px);
+        transform: translateX(-50px);
       }
       .feature.visible {
         transform: translateX(0);
       }
-      .waitlist-input {
-        flex-direction: column;
-        align-items: center;
-      }
     }
 
     @media (max-width: 480px) {
-      .logo {
-        font-size: clamp(1.4rem, 5vw, 1.8rem);
-      }
-      .hero h2 {
-        font-size: clamp(1.5rem, 6vw, 2.2rem);
-      }
       .hero p {
-        font-size: clamp(0.7rem, 3vw, 0.9rem);
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
       }
       .store-links {
         flex-direction: column;
         gap: 0.5rem;
       }
-      .store-link {
-        padding: 0.5rem 1rem;
-        font-size: clamp(0.7rem, 2.5vw, 0.8rem);
-      }
-      .cta {
-        padding: 0.7rem 1.5rem;
-        font-size: clamp(0.8rem, 3vw, 1rem);
-      }
-      .section {
-        padding: clamp(2rem, 6vw, 3rem) 0.5rem;
-      }
-      .section h2 {
-        font-size: clamp(1.5rem, 5vw, 2rem);
-      }
-      .feature h3 {
-        font-size: clamp(1.2rem, 4vw, 1.5rem);
-      }
-      .feature p {
-        font-size: clamp(0.7rem, 2.5vw, 0.9rem);
-      }
-      .waitlist h2 {
-        font-size: clamp(1.8rem, 6vw, 2.5rem);
-      }
-      .waitlist p {
-        font-size: clamp(0.8rem, 3vw, 1rem);
-      }
-      .waitlist input {
-        width: clamp(180px, 90vw, 240px);
+      .waitlist-input {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
