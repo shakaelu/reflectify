@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reflectify — Craft Your Story</title>
+  <title>Reflectify — Find Your Path</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -33,6 +33,7 @@
       width: 90%;
       max-width: 1100px;
       margin: 0 auto;
+      padding: 0 1rem;
     }
 
     header {
@@ -54,11 +55,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
       font-weight: 900;
       color: var(--highlight);
       letter-spacing: 1px;
@@ -68,10 +70,10 @@
     nav a {
       font-family: 'Lora', serif;
       color: var(--text-muted);
-      margin-left: 1.5rem;
+      margin: 0.5rem 1rem;
       text-decoration: none;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
       transition: color 0.3s ease, transform 0.3s ease;
     }
 
@@ -90,6 +92,7 @@
       background: linear-gradient(145deg, #151517, #060606);
       position: relative;
       overflow: hidden;
+      padding: 2rem 1rem;
     }
 
     .hero::before {
@@ -120,7 +123,7 @@
 
     .hero h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 4.5rem;
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
       font-weight: 900;
       color: var(--highlight);
       text-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
@@ -128,7 +131,7 @@
     }
 
     .hero p {
-      font-size: 1.3rem;
+      font-size: clamp(1rem, 3vw, 1.3rem);
       color: var(--text-muted);
       max-width: 600px;
       margin: 0 auto 2rem;
@@ -137,14 +140,15 @@
     .store-links {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1rem;
       margin-top: 1.5rem;
+      flex-wrap: wrap;
     }
 
     .store-link {
       font-family: 'Lora', serif;
       color: var(--text-light);
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
       font-weight: 600;
       text-decoration: none;
       padding: 0.8rem 1.5rem;
@@ -164,11 +168,11 @@
       display: inline-block;
       background: var(--accent);
       color: var(--text-light);
-      padding: 1.2rem 2.5rem;
+      padding: 1rem clamp(1.5rem, 4vw, 2.5rem);
       border-radius: 10px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 3vw, 1.2rem);
       transition: all 0.3s ease;
     }
 
@@ -180,14 +184,14 @@
     }
 
     .section {
-      padding: 6rem 2rem;
+      padding: clamp(4rem, 10vw, 6rem) 1rem;
       position: relative;
       text-align: center;
     }
 
     .section h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-size: clamp(2rem, 6vw, 3rem);
       font-weight: 900;
       color: var(--highlight);
       margin-bottom: 2rem;
@@ -202,51 +206,55 @@
       transform: translateY(0);
     }
 
-    .feature {
-      margin-bottom: 4rem;
-      padding: 2rem;
-      position: relative;
-      background: linear-gradient(to right, rgba(19, 19, 21, 0.8), transparent);
-      border-left: 4px solid var(--accent);
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    .feature-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      margin: 2rem 0;
     }
 
-    .feature:hover {
-      transform: translateX(10px);
-      box-shadow: 0 8px 25px rgba(43, 106, 106, 0.4);
+    .feature {
+      position: relative;
+      padding: 2rem clamp(1rem, 5vw, 2rem);
+      text-align: left;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+
+    .feature:nth-child(even) {
+      transform: translateX(50px);
+      text-align: right;
+    }
+
+    .feature.visible {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .feature h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
       color: var(--accent);
       font-weight: 700;
       margin-bottom: 1rem;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
     .feature p {
-      font-size: 1.1rem;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
       color: var(--text-muted);
-      max-width: 550px;
+      max-width: 500px;
       margin: 0 auto;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
     }
 
-    .feature.visible h3,
-    .feature.visible p {
-      opacity: 1;
-      transform: translateY(0);
+    .feature:nth-child(even) p {
+      margin-left: auto;
     }
 
     .waitlist {
       text-align: center;
       background: var(--bg-darker);
-      padding: 6rem 2rem;
+      padding: clamp(4rem, 10vw, 6rem) 1rem;
       position: relative;
     }
 
@@ -268,13 +276,13 @@
 
     .waitlist h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
       color: var(--highlight);
       margin-bottom: 1.5rem;
     }
 
     .waitlist p {
-      font-size: 1.3rem;
+      font-size: clamp(1rem, 3vw, 1.3rem);
       color: var(--text-muted);
       max-width: 600px;
       margin: 0 auto 2rem;
@@ -283,19 +291,19 @@
     .waitlist-input {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1rem;
       flex-wrap: wrap;
     }
 
     .waitlist input {
-      padding: 1.2rem;
+      padding: 1rem;
       border: none;
       border-radius: 10px;
-      width: 320px;
+      width: clamp(250px, 60vw, 320px);
       background: #1a1a1e;
       color: var(--text-light);
       font-family: 'Lora', serif;
-      font-size: 1.1rem;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
@@ -310,10 +318,10 @@
       background: var(--accent);
       color: var(--text-light);
       border: none;
-      padding: 1.2rem 2.5rem;
+      padding: 1rem clamp(1.5rem, 4vw, 2.5rem);
       border-radius: 10px;
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 3vw, 1.2rem);
       cursor: pointer;
       transition: all 0.3s ease;
     }
@@ -328,7 +336,7 @@
     .message {
       margin-top: 2rem;
       font-family: 'Lora', serif;
-      font-size: 1.1rem;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
       font-weight: 600;
     }
 
@@ -337,8 +345,48 @@
       text-align: center;
       padding: 2rem 0;
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
       font-family: 'Lora', serif;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        margin-top: 1rem;
+      }
+      .hero h2 {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+      }
+      .feature {
+        text-align: center !important;
+      }
+      .feature p {
+        margin: 0 auto !important;
+      }
+      .feature:nth-child(even) {
+        transform: translateX(-50px);
+      }
+      .feature.visible {
+        transform: translateX(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero p {
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+      }
+      .store-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .waitlist-input {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
@@ -348,7 +396,7 @@
       <h1 class="logo">REFLECTIFY</h1>
       <nav>
         <a href="#core">What It Does</a>
-        <a href="#impact">Why It Matters</a>
+        <a href="#impact">Why It Helps</a>
         <a href="#waitlist" class="highlight">Join Now</a>
       </nav>
     </div>
@@ -356,45 +404,52 @@
 
   <section class="hero">
     <div class="container hero-content">
-      <h2>Craft Your Story</h2>
-      <p>Reflectify helps you write your thoughts, see your life in clear graphs, and get printed journals every three months. Coming soon to App Store and Android.</p>
+      <h2>Find Your Path</h2>
+      <p>Feeling lost? Reflectify helps you write your thoughts, see your life in clear graphs, and get printed journals every three months to rediscover yourself. Coming soon to App Store and Android.</p>
       <a href="#waitlist" class="cta">Join Now</a>
-    
+      <div class="store-links">
+        <a href="#" class="store-link">Coming Soon to App Store</a>
+        <a href="#" class="store-link">Coming Soon to Android</a>
+      </div>
     </div>
   </section>
 
   <section id="core" class="section">
     <div class="container">
       <h2>What Reflectify Offers</h2>
-      <div class="feature">
-        <h3>Write Your Heart Out</h3>
-        <p>Put your thoughts and feelings on paper. Reflectify keeps them safe and real.</p>
-      </div>
-      <div class="feature">
-        <h3>See Your Journey</h3>
-        <p>Your words become graphs that show your life’s highs and lows clearly.</p>
-      </div>
-      <div class="feature">
-        <h3>Printed Keepsakes</h3>
-        <p>Get a printed journal every three months to hold your story forever.</p>
+      <div class="feature-flow">
+        <div class="feature">
+          <h3>Write Your Heart Out</h3>
+          <p>Pour your thoughts and feelings into a journal. Reflectify keeps them safe, helping you make sense of life’s chaos.</p>
+        </div>
+        <div class="feature">
+          <h3>See Your Journey</h3>
+          <p>Your words turn into graphs that show your life’s ups and downs, giving you a clear picture of where you’re at.</p>
+        </div>
+        <div class="feature">
+          <h3>Printed Keepsakes</h3>
+          <p>Every three months, get a printed journal to hold your story, a reminder of your growth and strength.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="impact" class="section">
     <div class="container">
-      <h2>Why It’s Special</h2>
-      <div class="feature">
-        <h3>Understand Yourself</h3>
-        <p>Graphs and journals show patterns in your life, helping you see clearly.</p>
-      </div>
-      <div class="feature">
-        <h3>Take Control</h3>
-        <p>Know how your life fits together to make better choices and find balance.</p>
-      </div>
-      <div class="feature">
-        <h3>Live with Purpose</h3>
-        <p>Your journals build a story that pushes you to live with meaning.</p>
+      <h2>Why It Helps</h2>
+      <div class="feature-flow">
+        <div class="feature">
+          <h3>Find Clarity</h3>
+          <p>Feeling lost can be overwhelming. Reflectify’s journals and graphs show patterns in your thoughts, emotions, and habits, helping you understand yourself and find direction.</p>
+        </div>
+        <div class="feature">
+          <h3>Take Control</h3>
+          <p>When life feels like a mess, Reflectify shows how your days connect. Use insights to make better choices and build a balanced life.</p>
+        </div>
+        <div class="feature">
+          <h3>Live with Purpose</h3>
+          <p>Your journals become a lasting story, pushing you to grow and live with meaning, even when you feel adrift.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -402,7 +457,7 @@
   <section id="waitlist" class="waitlist">
     <div class="container waitlist-content">
       <h2>Join the Journey</h2>
-      <p>Be first to try Reflectify on App Store and Android. Add your email to stay updated.</p>
+      <p>Be the first to try Reflectify on App Store and Android. Add your email to start finding your path.</p>
       <div class="waitlist-input">
         <input type="email" id="email" placeholder="Your email" required>
         <button onclick="submitWaitlist()">Join Now</button>
