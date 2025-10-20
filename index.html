@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reflectify — Craft Your Story</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0c0c0e;
+      --bg-darker: #080808;
+      --text-light: #f0f0f0;
+      --text-muted: #a0a0a0;
+      --accent: #2b6a6a; /* Muted teal for elegance */
+      --highlight: #c0c0c0; /* Deep silver for sophistication */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Lora', serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--bg-darker);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: background 0.3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(8, 8, 8, 0.95);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.9);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--highlight);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      font-family: 'Lora', serif;
+      color: var(--text-muted);
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    nav a:hover,
+    .highlight {
+      color: var(--highlight);
+      transform: scale(1.05);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(145deg, #151517, #060606);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(192, 192, 192, 0.15), transparent 70%);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      font-weight: 900;
+      color: var(--highlight);
+      text-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .store-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .store-link {
+      font-family: 'Lora', serif;
+      color: var(--text-light);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .store-link:hover {
+      background: var(--accent);
+      color: var(--bg-dark);
+      transform: scale(1.05);
+    }
+
+    .cta {
+      font-family: 'Playfair Display', serif;
+      display: inline-block;
+      background: var(--accent);
+      color: var(--text-light);
+      padding: 1.2rem 2.5rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .cta:hover {
+      background: var(--highlight);
+      color: var(--bg-dark);
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(43, 106, 106, 0.6);
+    }
+
+    .section {
+      padding: 6rem 2rem;
+      position: relative;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--highlight);
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .section.visible h2 {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feature {
+      margin-bottom: 4rem;
+      padding: 2rem;
+      position: relative;
+      background: linear-gradient(to right, rgba(19, 19, 21, 0.8), transparent);
+      border-left: 4px solid var(--accent);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .feature:hover {
+      transform: translateX(10px);
+      box-shadow: 0 8px 25px rgba(43, 106, 106, 0.4);
+    }
+
+    .feature h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .feature p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 550px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+    }
+
+    .feature.visible h3,
+    .feature.visible p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .waitlist {
+      text-align: center;
+      background: var(--bg-darker);
+      padding: 6rem 2rem;
+      position: relative;
+    }
+
+    .waitlist::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(192, 192, 192, 0.1), transparent 60%);
+      z-index: 0;
+    }
+
+    .waitlist-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .waitlist h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: var(--highlight);
+      margin-bottom: 1.5rem;
+    }
+
+    .waitlist p {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .waitlist-input {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .waitlist input {
+      padding: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      width: 320px;
+      background: #1a1a1e;
+      color: var(--text-light);
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .waitlist input:focus {
+      outline: none;
+      box-shadow: 0 0 15px rgba(43, 106, 106, 0.7);
+      transform: scale(1.02);
+    }
+
+    .waitlist button {
+      font-family: 'Playfair Display', serif;
+      background: var(--accent);
+      color: var(--text-light);
+      border: none;
+      padding: 1.2rem 2.5rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .waitlist button:hover {
+      background: var(--highlight);
+      color: var(--bg-dark);
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(43, 106, 106, 0.6);
+    }
+
+    .message {
+      margin-top: 2rem;
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    footer {
+      background: var(--bg-darker);
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-family: 'Lora', serif;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <h1 class="logo">REFLECTIFY</h1>
+      <nav>
+        <a href="#core">What It Does</a>
+        <a href="#impact">Why It Matters</a>
+        <a href="#waitlist" class="highlight">Join Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <h2>Craft Your Story</h2>
+      <p>Reflectify helps you write your thoughts, see your life in clear graphs, and get printed journals every three months. Coming soon to App Store and Android.</p>
+      <a href="#waitlist" class="cta">Join Now</a>
+    
+    </div>
+  </section>
+
+  <section id="core" class="section">
+    <div class="container">
+      <h2>What Reflectify Offers</h2>
+      <div class="feature">
+        <h3>Write Your Heart Out</h3>
+        <p>Put your thoughts and feelings on paper. Reflectify keeps them safe and real.</p>
+      </div>
+      <div class="feature">
+        <h3>See Your Journey</h3>
+        <p>Your words become graphs that show your life’s highs and lows clearly.</p>
+      </div>
+      <div class="feature">
+        <h3>Printed Keepsakes</h3>
+        <p>Get a printed journal every three months to hold your story forever.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact" class="section">
+    <div class="container">
+      <h2>Why It’s Special</h2>
+      <div class="feature">
+        <h3>Understand Yourself</h3>
+        <p>Graphs and journals show patterns in your life, helping you see clearly.</p>
+      </div>
+      <div class="feature">
+        <h3>Take Control</h3>
+        <p>Know how your life fits together to make better choices and find balance.</p>
+      </div>
+      <div class="feature">
+        <h3>Live with Purpose</h3>
+        <p>Your journals build a story that pushes you to live with meaning.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="waitlist" class="waitlist">
+    <div class="container waitlist-content">
+      <h2>Join the Journey</h2>
+      <p>Be first to try Reflectify on App Store and Android. Add your email to stay updated.</p>
+      <div class="waitlist-input">
+        <input type="email" id="email" placeholder="Your email" required>
+        <button onclick="submitWaitlist()">Join Now</button>
+      </div>
+      <p id="formMessage" class="message"></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Reflectify. Your story, your truth.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function submitWaitlist() {
+      const emailInput = document.getElementById('email');
+      const message = document.getElementById('formMessage');
+      const email = emailInput.value.trim();
+
+      if (!email || !/\S+@\S+\.\S+/.test(email)) {
+        message.textContent = 'Please enter a valid email.';
+        message.style.color = '#a0a0a0';
+        return;
+      }
+
+      message.textContent = 'You’re in! Get ready for Reflectify.';
+      message.style.color = '#c0c0c0';
+      emailInput.value = '';
+    }
+
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.8) {
+          section.classList.add('visible');
+          section.querySelectorAll('.feature').forEach(feature => {
+            feature.classList.add('visible');
+          });
+        }
+      });
+
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>
